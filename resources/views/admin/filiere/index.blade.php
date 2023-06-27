@@ -1,5 +1,4 @@
-@extends('admin.admin')
-
+@extends('layouts.app')
 @section('title','Filière')
 
 @section('content')

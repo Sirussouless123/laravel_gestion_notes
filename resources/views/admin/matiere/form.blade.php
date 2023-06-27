@@ -1,4 +1,5 @@
-@extends('admin.admin')
+{{-- @extends('admin.admin') --}}
+@extends('layouts.app')
 
 @section('title', $matiere->exists ? 'Modifier une matière' : 'Créer une matière')
 

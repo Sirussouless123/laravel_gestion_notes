@@ -1,4 +1,5 @@
-@extends('admin.admin')
+{{-- @extends('admin.admin') --}}
+@extends('layouts.app')
 
 @section('title', $annee_academique->exists ? 'Modifier une année académique' : 'Créer une  année académique')
 

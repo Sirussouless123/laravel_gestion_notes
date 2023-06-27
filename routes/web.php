@@ -1,9 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Filiere\FiliereController;
 use App\Http\Controllers\Matiere\MatiereController;
 use App\Http\Controllers\AnneeAcademique\AnneeAcademiqueController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\Filiere_matiere\Filiere_matiereController;
 
 /*
@@ -17,10 +19,16 @@ use App\Http\Controllers\Filiere_matiere\Filiere_matiereController;
 |
 */
 
-Route::prefix('admin')->name('admin.')->group( function(){
+Route::prefix('admin')->middleware(['auth','isAdmin'])->name('admin.')->group( function(){
 
     Route::resource('filiere',FiliereController::class)->except('show');
     Route::resource('matiere',MatiereController::class)->except('show');
     Route::resource('annee',AnneeAcademiqueController::class)->except('show');
     Route::resource('filiere_matiere',Filiere_matiereController::class)->except('show');
 });
+
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'user']);
+

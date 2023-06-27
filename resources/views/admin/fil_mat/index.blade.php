@@ -1,5 +1,5 @@
-@extends('admin.admin')
-
+{{-- @extends('admin.admin') --}}
+@extends('layouts.app')
 @section('title','Filières-Matières')
 
 @section('content')

@@ -19,7 +19,8 @@ class Filiere_matiereController extends Controller
     public function index()
     {
         $filMats = DB::table('filiere_matieres')->join('filieres', 'filiere_matieres.filiere_id', '=', 'filieres.id')
-            ->join('matieres', 'filiere_matieres.matiere_id', '=', 'matieres.id')->select(['filiere_matieres.masse', 'filiere_matieres.credit', 'matieres.nom'])->get();
+            ->join('matieres', 'filiere_matieres.matiere_id', '=', 'matieres.id')->select('filiere_matieres.masse', 'filiere_matieres.credit', 'matieres.nom as nom_mat','filieres.nom as nom_fil')->get();
+            dd($filMats);
         return view('admin.fil_mat.index', [
             'fil_mats' => Filiere_matiere::Paginate(5),
         ]);
